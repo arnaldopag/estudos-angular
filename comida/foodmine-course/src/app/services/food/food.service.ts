@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Food } from '../../shared/models/food';
-import { Tag } from '../../shared/models/tag';
+import { Food } from '../../shared/models/Food';
+import { Tag } from '../../shared/models/Tag';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,6 +11,11 @@ export class FoodService {
       food.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+
+  getFoodById(id: number): Food {
+    return this.getAll().find((food) => food.id === id)!;
+  }
+
   getAllTags(): Tag[] {
     return [
       { name: 'all', count: 14 },
